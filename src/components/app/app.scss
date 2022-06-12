@@ -4,6 +4,7 @@
   min-height: 100vh;
   width: 100%;
   height: 100%;
+  background-color: #f2f2f2;
   font-family: "Poppins", "Arial", "Helvetica", sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -11,4 +12,21 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+}
+
+.title {
+  color: #e3d0cf;
+  font-weight: 100;
+  font-size: 100px;
+  line-height: 1.2;
+  letter-spacing: -5px;
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
 }
