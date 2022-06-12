@@ -5,22 +5,29 @@ import {
   useContext,
   Dispatch,
   ReactNode,
+  Context,
 } from "react";
 import { IAction, IState } from "../utils/types";
-import { todoReducer } from "./reducers/todo";
+import { addTodoReducer } from "./reducers/add-todo";
 
-const initialState = {};
+const initialState = {
+  list: [] as [],
+};
 
-const GlobalContext = createContext(initialState);
+const GlobalContext = createContext<IState>(initialState);
 
 const reducers = (state: IState, action: IAction) => {
   return {
     ...state,
-    ...Object.assign(state, todoReducer(state, action)),
+    ...Object.assign(state, addTodoReducer(state, action)),
   };
 };
 
-export function StoreProvider({ children }: { children: ReactNode }) {
+interface IStoreProviderProps {
+  children: ReactNode;
+}
+
+export function StoreProvider({ children }: IStoreProviderProps) {
   const [state, dispatch] = useReducer(reducers, initialState);
   const contextValue = useMemo(
     (): [IState, Dispatch<IAction>] => [state, dispatch],
@@ -28,12 +35,12 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   );
 
   return (
-    <GlobalContext.Provider value={contextValue}>
+    <GlobalContext.Provider value={{ ...contextValue[0], ...contextValue }}>
       {children}
     </GlobalContext.Provider>
   );
 }
 
 export function useStore(): [IState, Dispatch<IAction>] {
-  return useContext<any>(GlobalContext);
+  return useContext(GlobalContext as Context<any>);
 }
