@@ -1,0 +1,41 @@
+.todo {
+  overflow-y: auto;
+  &__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    &-item {
+      padding: 15px 10px;
+      border-bottom: 1px solid #e4e4e4;
+      display: flex;
+      align-items: center;
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+  &__button {
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #e4e4e4;
+    border-radius: 50%;
+    cursor: pointer;
+    &_active {
+      border-color: #bcd6d0;
+      background-image: url(./images/check.png);
+      background-size: 65%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+  &__text {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 24px;
+    &_active {
+      text-decoration: line-through;
+      color: #e4e4e4;
+    }
+  }
+}

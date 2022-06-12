@@ -6,6 +6,12 @@
 
 @font-face {
   font-family: "Poppins";
+  src: url(../utils/fonts/Poppins-ExtraLight.ttf) format("TrueType");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Poppins";
   src: url(../utils/fonts/Poppins-Regular.ttf) format("TrueType");
   font-weight: normal;
 }
