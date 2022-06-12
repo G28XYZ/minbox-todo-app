@@ -4,7 +4,10 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "webpack serve"
+    "build": "webpack --mode production",
+    "start": "webpack serve",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -48,7 +51,6 @@
     "webpack-dev-server": "^4.7.3"
   },
   "dependencies": {
-    "axios": "^0.26.1",
     "core-js": "^3.22.2"
   }
 }
