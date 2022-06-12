@@ -1,5 +1,5 @@
 function App() {
-  return <main className="page">Hello</main>;
+  return <main className="page">TODOS</main>;
 }
 
 export default App;
