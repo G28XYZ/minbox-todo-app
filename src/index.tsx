@@ -1,11 +1,14 @@
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import App from "./components/app/App";
 import "./index.scss";
 import { StoreProvider } from "./services/store";
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+
+root.render(
   <StoreProvider>
     <App />
-  </StoreProvider>,
-  document.getElementById("root")
+  </StoreProvider>
 );

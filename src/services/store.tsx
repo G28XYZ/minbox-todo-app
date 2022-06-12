@@ -6,23 +6,12 @@ import {
   Dispatch,
   ReactNode,
 } from "react";
-
-interface IState {}
-
-interface IAction {
-  type: string;
-}
+import { IAction, IState } from "../utils/types";
+import { todoReducer } from "./reducers/todo";
 
 const initialState = {};
 
 const GlobalContext = createContext(initialState);
-
-const todoReducer = (state: IState, action: IAction) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
 
 const reducers = (state: IState, action: IAction) => {
   return {
