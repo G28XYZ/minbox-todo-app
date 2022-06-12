@@ -1,19 +1,24 @@
+import { useStore } from "../../services/store";
+import { IItem } from "../../utils/types";
+import TodoItem from "../todo-item/TodoItem";
+
 function TodoList() {
+  const [state] = useStore();
+  const { filtered } = state;
+  const filteredList = filtered.all
+    ? state.list
+    : state.list.filter((item: IItem) => {
+        if (filtered.active) return item.check === false;
+        if (filtered.completed) return item.check === true;
+      });
+
   return (
     <div className="todo">
       <ul className="todo__list">
-        <li className="todo__list-item">
-          <button className="todo__button todo__button_active"></button>
-          <p className="todo__text todo__text_active">asdffa1</p>
-        </li>
-        <li className="todo__list-item">
-          <button className="todo__button"></button>
-          <p className="todo__text">2</p>
-        </li>
-        <li className="todo__list-item">
-          <button className="todo__button"></button>
-          <p className="todo__text">3</p>
-        </li>
+        {state.list.length == 0 && <h2 className="todo__message">Add Todo</h2>}
+        {filteredList.map((item: IItem) => (
+          <TodoItem {...item} key={item.id} />
+        ))}
       </ul>
     </div>
   );

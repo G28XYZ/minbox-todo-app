@@ -9,9 +9,17 @@ import {
 } from "react";
 import { IAction, IState } from "../utils/types";
 import { addTodoReducer } from "./reducers/add-todo";
+import { todoListReducer } from "./reducers/todo-list";
+import { todoToolsReduce } from "./reducers/todo-tools";
 
 const initialState = {
   list: [] as [],
+  filtered: {
+    all: true,
+    active: false,
+    completed: false,
+  },
+  todoText: "",
 };
 
 const GlobalContext = createContext<IState>(initialState);
@@ -19,7 +27,12 @@ const GlobalContext = createContext<IState>(initialState);
 const reducers = (state: IState, action: IAction) => {
   return {
     ...state,
-    ...Object.assign(state, addTodoReducer(state, action)),
+    ...Object.assign(
+      state,
+      addTodoReducer(state, action),
+      todoToolsReduce(state, action),
+      todoListReducer(state, action)
+    ),
   };
 };
 

@@ -1,5 +1,14 @@
 .todo {
+  overflow: hidden;
   overflow-y: auto;
+  &__message {
+    margin: 0;
+    padding: 15px;
+    color: #e4e4e4;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
   &__list {
     list-style-type: none;
     margin: 0;
