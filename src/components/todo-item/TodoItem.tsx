@@ -11,10 +11,6 @@ function TodoItem(item: IItem) {
     checkTodo(dispatch, item);
   }
 
-  useEffect(() => {
-    console.log(item);
-  }, []);
-
   return (
     <li className="todo__list-item">
       <button

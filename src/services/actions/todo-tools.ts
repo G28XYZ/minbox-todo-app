@@ -1,4 +1,4 @@
-import { Dispatch } from "react";
-import { IAction } from "../../utils/types";
-
-export function changeView(dispatch: Dispatch<IAction>) {}
+export const TODO_TOOLS = {
+  CHANGE_VIEW: "CHANGE_VIEW",
+  CLEAR_COMPLETED: "CLEAR_COMPLETED",
+};

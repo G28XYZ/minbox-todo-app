@@ -14,11 +14,7 @@ import { todoToolsReduce } from "./reducers/todo-tools";
 
 const initialState = {
   list: [] as [],
-  filtered: {
-    all: true,
-    active: false,
-    completed: false,
-  },
+  view: "All",
   todoText: "",
 };
 

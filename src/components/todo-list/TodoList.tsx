@@ -4,18 +4,23 @@ import TodoItem from "../todo-item/TodoItem";
 
 function TodoList() {
   const [state] = useStore();
-  const { filtered } = state;
-  const filteredList = filtered.all
-    ? state.list
-    : state.list.filter((item: IItem) => {
-        if (filtered.active) return item.check === false;
-        if (filtered.completed) return item.check === true;
-      });
+  const view = state.view;
+  const filteredList =
+    view === "All"
+      ? state.list
+      : state.list.filter((item: IItem) => {
+          if (view === "Active") return item.check === false;
+          if (view === "Completed") return item.check === true;
+        });
 
   return (
     <div className="todo">
       <ul className="todo__list">
-        {state.list.length == 0 && <h2 className="todo__message">Add Todo</h2>}
+        {filteredList.length === 0 && (
+          <h2 className="todo__message">{`${
+            view === "All" ? "Add Todo" : "Nothing in " + view
+          }`}</h2>
+        )}
         {filteredList.map((item: IItem) => (
           <TodoItem {...item} key={item.id} />
         ))}

@@ -3,15 +3,9 @@ export interface IItem {
   check: boolean;
   id: string;
 }
-
-export interface IFiltered {
-  all: boolean;
-  active: boolean;
-  completed: boolean;
-}
 export interface IState {
   list: [] | IItem[];
-  filtered: IFiltered;
+  view: string;
   todoText: string;
 }
 
@@ -23,4 +17,5 @@ export interface IAction {
   message?: string;
   text?: string;
   item?: IItem;
+  view?: string;
 }
