@@ -13,6 +13,8 @@ const presets = [
       // corejs: 3,
     },
   ],
+  "@babel/preset-typescript",
+  ["@babel/preset-react", { runtime: "automatic" }],
 ];
 
 module.exports = { presets };

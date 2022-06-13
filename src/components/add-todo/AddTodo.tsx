@@ -19,7 +19,11 @@ function AddTodo() {
 
   return (
     <form className="add" onSubmit={onSubmit}>
-      <button className="add__button" type="submit"></button>
+      <button
+        aria-label="submit"
+        className="add__button"
+        type="submit"
+      ></button>
       <input
         type="text"
         placeholder="What needs to be done?"
