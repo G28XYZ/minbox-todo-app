@@ -9,8 +9,8 @@ function TodoList() {
     view === "All"
       ? state.list
       : state.list.filter((item: IItem) => {
-          if (view === "Active") return item.check === false;
-          if (view === "Completed") return item.check === true;
+          if (view === "Active") return item.done === false;
+          if (view === "Completed") return item.done === true;
         });
 
   return (

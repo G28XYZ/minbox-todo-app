@@ -7,13 +7,18 @@ import {
   ReactNode,
   Context,
 } from "react";
-import { IAction, IState } from "../utils/types";
+import { IAction, IItem, IState } from "../utils/types";
 import { addTodoReducer } from "./reducers/add-todo";
 import { todoListReducer } from "./reducers/todo-list";
 import { todoToolsReduce } from "./reducers/todo-tools";
+const shortid = require("shortid");
 
-const initialState = {
-  list: [] as [],
+const initialState: IState = {
+  list: [
+    { text: "Тестовое задание", done: false, id: shortid.generate() },
+    { text: "Прекрасный код", done: true, id: shortid.generate() },
+    { text: "Покрытие тестами", done: false, id: shortid.generate() },
+  ],
   view: "All",
   todoText: "",
 };

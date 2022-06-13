@@ -13,6 +13,9 @@ function renderApp() {
 }
 const inputValue = "JavaScript";
 
+const INITIAL_TOTAL_ITEMS = 3;
+const INITIAL_ACTIVE_ITEMS = 2;
+
 it("Add todo - type text in input and press enter", async () => {
   renderApp();
   const input = screen.getByPlaceholderText("What needs to be done?");
@@ -20,7 +23,7 @@ it("Add todo - type text in input and press enter", async () => {
   expect(input.textContent).toEqual("");
 
   const listItems = await screen.findAllByRole("listitem");
-  expect(listItems).toHaveLength(1);
+  expect(listItems).toHaveLength(INITIAL_TOTAL_ITEMS);
   expect(input.textContent).toEqual("");
 });
 
@@ -33,7 +36,7 @@ it("Add todo - type text in input and click button", async () => {
   expect(input.textContent).toEqual("");
   await userEvent.dblClick(addButton);
   const listItems = await screen.findAllByRole("listitem");
-  expect(listItems).toHaveLength(1);
+  expect(listItems).toHaveLength(INITIAL_TOTAL_ITEMS + 1);
   expect(input.textContent).toEqual("");
 });
 
@@ -56,13 +59,15 @@ it("Check todo, find in completed and clear completed", async () => {
   userEvent.type(input, `${inputValue}`);
   fireEvent.submit(input);
   // нажать кнопку выполнения задачи
-  const checkButton = screen.getByRole("button", { name: "check" });
-  fireEvent.click(checkButton);
+  const checkButton = screen.getAllByRole("button", { name: "check" });
+  fireEvent.click(checkButton[0]);
   // нажать кнопку сортировки выполненных задач
   const buttonCompleted = screen.getByRole("button", { name: "Completed" });
   fireEvent.click(buttonCompleted);
   // проверить список задач в выбранной сортировке
-  expect(await screen.findAllByRole("listitem")).toHaveLength(1);
+  expect(await screen.findAllByRole("listitem")).toHaveLength(
+    INITIAL_ACTIVE_ITEMS
+  );
   // очистить выполненные задачи
   const clearButton = screen.getByRole("button", { name: "clear" });
   fireEvent.click(clearButton);
@@ -83,13 +88,13 @@ it("Add todo - 10 tasks, complete one and clear completed", async () => {
   fireEvent.click(checkButtons[0]);
 
   expect(await screen.findAllByRole("listitem")).toHaveLength(
-    inputValue.length
+    inputValue.length + INITIAL_TOTAL_ITEMS
   );
 
   const clearButton = screen.getByRole("button", { name: "clear" });
   fireEvent.click(clearButton);
 
   expect(await screen.findAllByRole("listitem")).toHaveLength(
-    inputValue.length - 1
+    inputValue.length + INITIAL_ACTIVE_ITEMS
   );
 });

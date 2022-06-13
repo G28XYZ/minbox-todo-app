@@ -5,7 +5,7 @@ import { IItem } from "../../utils/types";
 
 function TodoItem(item: IItem) {
   const [state, dispatch] = useStore();
-  const { check, text } = item;
+  const { done, text } = item;
 
   function handleCheckTodo() {
     checkTodo(dispatch, item);
@@ -16,9 +16,9 @@ function TodoItem(item: IItem) {
       <button
         aria-label="check"
         onClick={handleCheckTodo}
-        className={`todo__button ${check && "todo__button_active"}`}
+        className={`todo__button ${done && "todo__button_active"}`}
       ></button>
-      <p className={`todo__text ${check && "todo__text_active"}`}>{text}</p>
+      <p className={`todo__text ${done && "todo__text_active"}`}>{text}</p>
     </li>
   );
 }

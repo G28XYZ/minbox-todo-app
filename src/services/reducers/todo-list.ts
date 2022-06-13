@@ -8,7 +8,7 @@ export const todoListReducer = (state: IState, action: IAction) => {
       const itemIndex = newList.findIndex(
         (item: IItem) => item.id === action.item.id
       );
-      state.list[itemIndex].check = !state.list[itemIndex].check;
+      state.list[itemIndex].done = !state.list[itemIndex].done;
       return { ...state, list: [...state.list] };
 
     default:

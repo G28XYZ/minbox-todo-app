@@ -1,6 +1,6 @@
 export interface IItem {
   text: string;
-  check: boolean;
+  done: boolean;
   id: string;
 }
 export interface IState {

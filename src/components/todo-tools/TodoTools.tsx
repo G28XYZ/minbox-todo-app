@@ -6,7 +6,7 @@ import { IItem } from "../../utils/types";
 function TodoTools() {
   const [state, dispatch] = useStore();
   const view = state.view;
-  const activeList = state.list.filter((item: IItem) => item.check === false);
+  const activeList = state.list.filter((item: IItem) => item.done === false);
 
   function handleClickView(e: MouseEvent<HTMLButtonElement>) {
     const view = e.currentTarget.textContent;

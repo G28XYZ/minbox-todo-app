@@ -7,7 +7,7 @@ export const addTodoReducer = (state: IState, action: IAction) => {
     case ADD_ACTIONS.ADD_TODO:
       const newTodo = {
         text: state.todoText,
-        check: false,
+        done: false,
         id: shortid.generate(),
       };
       return { ...state, list: [...state.list, newTodo] };
