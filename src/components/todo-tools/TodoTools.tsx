@@ -13,7 +13,7 @@ function TodoTools() {
     dispatch({ type: TODO_TOOLS.CHANGE_VIEW, view });
   }
 
-  function handleClearComleted() {
+  function handleClearCompleted() {
     dispatch({ type: TODO_TOOLS.CLEAR_COMPLETED });
   }
 
@@ -27,12 +27,14 @@ function TodoTools() {
       <p className="tools__info">{formatText()}</p>
       <div className="tools__buttons">
         <button
+          aria-label="All"
           onClick={handleClickView}
           className={`tools__button ${view == "All" && "tools__button_active"}`}
         >
           All
         </button>
         <button
+          aria-label="Active"
           onClick={handleClickView}
           className={`tools__button ${
             view === "Active" && "tools__button_active"
@@ -41,6 +43,7 @@ function TodoTools() {
           Active
         </button>
         <button
+          aria-label="Completed"
           onClick={handleClickView}
           className={`tools__button ${
             view === "Completed" && "tools__button_active"
@@ -50,7 +53,11 @@ function TodoTools() {
         </button>
       </div>
       <div className="tools__clear">
-        <button onClick={handleClearComleted} className="tools__button">
+        <button
+          aria-label="clear"
+          onClick={handleClearCompleted}
+          className="tools__button"
+        >
           Clear Completed
         </button>
       </div>

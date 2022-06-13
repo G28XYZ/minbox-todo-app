@@ -14,6 +14,7 @@ function TodoItem(item: IItem) {
   return (
     <li className="todo__list-item">
       <button
+        aria-label="check"
         onClick={handleCheckTodo}
         className={`todo__button ${check && "todo__button_active"}`}
       ></button>
